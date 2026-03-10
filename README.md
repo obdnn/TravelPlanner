@@ -74,7 +74,8 @@ Once the server is running, you can explore and test all endpoints, validations,
 Alternatively, the base URL for the API is `http://127.0.0.1:8000/api/`.
 
 ### Example Request (Create Project with Places)
-**POST** `/api/projects/`
+### 1. Create a Project with Places
+**POST** `http://127.0.0.1:8000/api/projects/`
 ```json
 {
     "name": "Trip to Chicago",
@@ -84,3 +85,20 @@ Alternatively, the base URL for the API is `http://127.0.0.1:8000/api/`.
     ]
 }
 ```
+
+### 2. List All Projects
+**GET** `http://127.0.0.1:8000/api/projects/`
+Returns an array of all travel projects, including their nested places and the dynamically calculated `is_completed` status.
+
+### 3. Update a Place (Mark as Visited & Edit Notes)
+**PATCH** `http://127.0.0.1:8000/api/places/1/`
+```json
+{
+    "notes": "It was amazing, highly recommend!",
+    "is_visited": true
+}
+```
+
+### 4. Delete a Project
+**DELETE** `http://127.0.0.1:8000/api/projects/1/`
+*(Note: As per business requirements, this will return a `400 Bad Request` if any places within the project are already marked as visited).*
