@@ -1,6 +1,5 @@
 django
 djangorestframework
 requests
-pymysql
 cryptography
 python-dotenv
